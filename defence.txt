@@ -1,0 +1,22 @@
+
+Database Design
+
+The university_tycoon database uses six connected tables to organise game data, avoiding a single oversized table and making updates easier. The player table holds each player’s details, credits, tokens, current position, and suspension status. The location table lists every board space, such as buildings, corners, hearing spaces, and RAG spaces. Building contains costs, colour groups, and ownership details; special describes non-building spaces. Token stores player tokens, and audit_log records each player’s ID, round, ending position, and credits after every turn.
+
+Primary keys has uniquely identifies records, but foreign key links related tables and maintain refrential integrity. Each building is linked to a location and can reference owning player. Players’ records point to their current locations and tokens. The owner field can be NULL for an unowned building, so there is no need to create a placeholder owner. A player may own multiple buildings, but a building has only one player as owner.  
+
+Assumptions
+
+Ali G is treated as a free-resting corner with no additional effect. The leaderboard shows suspended players as "suspension" and non-suspended players as "visitor" standing on location 8. One audit record is created for players turn. The player_id is stored instead of the player's name by joining audit log table to player table.
+
+Normalisation
+
+The schema separates players,tokens,location,buildings and special spaces and  follows 3NF to avoid redundancy and anomalies.But building and special names are also stored in location table so duplication is there. The tuition of a building depends on the id of the building and not on the owner so the fee is associated with building. Token names are stored once in token rather than repeatedly in player records. 
+
+SQL Choices and Leaderboard
+
+The leaderboard view is a join of the player and location tables and produces a summary based on the current tables whenever it is accessed. The CASE expression is evaluated before the location name is converted into a uniform format, so it doesn’t convert suspended players into normal visitors. One subquery employs GROUP_CONCAT to concatenate each player’s buildings, sorted by board_pos to maintain board order. The view does not replicate the same summary query, and it doesn’t store a different copy that could get stale. 
+
+Automation and Limitations
+
+The gameplay scripts charge movement, purchases, rent, fines and bonuses for the given rounds. Relative updates, such as credits = credits + 70, add to the current balance. Stewart's purchase must happen before Nadine's turn as he own both Brown buildings -Shopping Precinct, MECD and double rent gets applied. SQLite has no stored procedures, so the round logic is written in SQL scripts. A trigger can also be used to insert an audit record after a player updates their location, but with explicit scripts, the order of events and calculation of credit are easier to examine and verify. 
