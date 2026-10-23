@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>University Tycoon | Database Project</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      background: #0b1120; color: #e5e7eb; line-height: 1.6;
+    }
+    header {
+      padding: 22px 8%; border-bottom: 1px solid #263247;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header a, a { color: #7dd3fc; text-decoration: none; }
+    .hero { padding: 80px 8% 60px; max-width: 1000px; }
+    .tag { color: #7dd3fc; text-transform: uppercase; letter-spacing: 2px; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.08; margin: 15px 0; }
+    h2 { color: white; }
+    .muted { color: #aab6ca; }
+    .button {
+      display: inline-block; background: #38bdf8; color: #082032;
+      padding: 12px 18px; border-radius: 8px; font-weight: bold; margin: 8px 8px 0 0;
+    }
+    main { padding: 0 8% 60px; max-width: 1200px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 18px; }
+    .card {
+      padding: 22px; background: #131e31; border: 1px solid #293750;
+      border-radius: 14px;
+    }
+    .card p { color: #aab6ca; }
+    footer { padding: 25px 8%; border-top: 1px solid #263247; color: #aab6ca; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>UNIVERSITY TYCOON</strong>
+    <a href="https://github.com/MEH2708/university-tycoon-game-assignment1">GitHub Repository ↗</a>
+  </header>
+
+  <section class="hero">
+    <div class="tag">Database Design · SQLite · SQL</div>
+    <h1>University Tycoon<br>Database Project</h1>
+    <p class="muted">
+      A relational database coursework project modelling players, board locations,
+      buildings, ownership, game turns and leaderboard results.
+    </p>
+    <a class="button" href="erd.pdf">Explore the ER Diagram</a>
+    <a class="button" href="view.sql">View Leaderboard SQL</a>
+  </section>
+
+  <main>
+    <h2>Project Resources</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Database Schema</h3>
+        <p>Tables, keys, constraints and relationships.</p>
+        <a href="create.sql">create.sql →</a>
+      </article>
+      <article class="card">
+        <h3>Initial Game State</h3>
+        <p>Tokens, players, locations and initial records.</p>
+        <a href="populate.sql">populate.sql →</a>
+      </article>
+      <article class="card">
+        <h3>Gameplay Scripts</h3>
+        <p>SQL scripts for the three rounds of gameplay.</p>
+        <a href="q1g.sql">Round 1 scripts →</a><br>
+        <a href="q2g.sql">Round 2 scripts →</a><br>
+        <a href="q3g.sql">Round 3 scripts →</a>
+      </article>
+      <article class="card">
+        <h3>Leaderboard</h3>
+        <p>Recorded results from the coursework database.</p>
+        <a href="leaderboard1.png">Leaderboard 1 →</a><br>
+        <a href="leaderboard2.png">Leaderboard 2 →</a><br>
+        <a href="leaderboard3.png">Leaderboard 3 →</a>
+      </article>
+      <article class="card">
+        <h3>Database File</h3>
+        <p>Download the SQLite database for local inspection.</p>
+        <a href="university_tycoon.db">Download database →</a>
+      </article>
+      <article class="card">
+        <h3>Documentation</h3>
+        <p>View the coursework design rationale.</p>
+        <a href="defence.txt">Read defence →</a>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    University Tycoon · Database Design Coursework ·
+    <a href="https://github.com/MEH2708">GitHub profile</a>
+  </footer>
+</body>
+</html>
